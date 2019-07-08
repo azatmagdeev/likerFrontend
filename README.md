@@ -9,7 +9,7 @@
 Если мемасик набрал -10, то нужно перестать его
 показывать
 
-https://azatmagdeev.github.io/likerFrontend
+https://azatmagdeev.github.io/likerFrontend/
 
 Бэкенд-приложение здесь: 
 https://github.com/azatmagdeev/likerBackend
