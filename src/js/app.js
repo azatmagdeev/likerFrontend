@@ -1,5 +1,8 @@
 import {Liker} from "./lib.js";
 
+//TODO: make it possible to add memes
+
+
 class Widget {
     constructor(parentEl, manager) {
         this.parentEl = parentEl;
@@ -46,12 +49,12 @@ class Widget {
 
             btnPlus.addEventListener('click', () => {
                 mem.score++;
-                this.manager.sendData(mems, () => this.showMems(mems));
+                this.manager.sendData(mem, () => this.showMems(mems));
 
             });
             btnMinus.addEventListener('click', () => {
                 mem.score--;
-                this.manager.sendData(mems, () => this.showMems(mems));
+                this.manager.sendData(mem, () => this.showMems(mems));
             });
 
         }
