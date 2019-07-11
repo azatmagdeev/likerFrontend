@@ -16,15 +16,15 @@ export class Liker {
         });
         xhr.send();
     }
-    sendData(mems,success) {
+
+    sendData(mem,success) {
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', `${this.apiURL}`);
+        xhr.open('POST', `${this.apiURL}/${mem.id}`);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.addEventListener('load',()=>{
-            success(this.mems);
+            success(mem);
         });
-        xhr.send(JSON.stringify(this.mems));
-
+        xhr.send(JSON.stringify(mem));
     }
 
 }
