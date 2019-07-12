@@ -6,7 +6,6 @@ export class Liker {
     }
 
 
-
     getData(success) {
         const xhr = new XMLHttpRequest();
         xhr.open('GET', `${this.apiURL}`);
@@ -17,11 +16,21 @@ export class Liker {
         xhr.send();
     }
 
-    sendData(mem,success) {
+    likeMem(mem, success) {
         const xhr = new XMLHttpRequest();
         xhr.open('POST', `${this.apiURL}/${mem.id}`);
         xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.addEventListener('load',()=>{
+        xhr.addEventListener('load', () => {
+            success(mem);
+        });
+        xhr.send(JSON.stringify(mem));
+    }
+
+    dislikeMem(mem, success) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('DELETE', `${this.apiURL}/${mem.id}`);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.addEventListener('load', () => {
             success(mem);
         });
         xhr.send(JSON.stringify(mem));
