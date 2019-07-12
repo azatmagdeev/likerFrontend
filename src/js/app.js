@@ -33,7 +33,7 @@ class Widget {
             if (mem.score < this.scoreLimit) continue;
             const newMemEl = document.createElement('div');
             newMemEl.innerHTML = `<div class="border">
-     <img src="${mem.image}" alt=""></div>
+     <img src="${mem.imgUrl}" alt=""></div>
     `;
             this.listEl.appendChild(newMemEl);
 
@@ -48,13 +48,10 @@ class Widget {
             newMemEl.appendChild(btnMinus);
 
             btnPlus.addEventListener('click', () => {
-                mem.score++;
-                this.manager.sendData(mem, () => this.showMems(mems));
-
+                this.manager.likeMem(mem, () => this.onLoadAll());
             });
             btnMinus.addEventListener('click', () => {
-                mem.score--;
-                this.manager.sendData(mem, () => this.showMems(mems));
+                this.manager.dislikeMem(mem, () => this.onLoadAll());
             });
 
         }
