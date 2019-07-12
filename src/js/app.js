@@ -12,10 +12,21 @@ class Widget {
     }
 
     init() {
-        this.parentEl.innerHTML = `<div><h1>Liker App</h1></div>
+        this.parentEl.innerHTML = `<div><h1>Liker App <button class="btn btn-primary" id="add">Добавить мем</button></h1></div>
                                     <div id="list"></div>`;
 
         this.listEl = document.getElementById('list');
+
+        const addBtn = document.getElementById('add');
+        addBtn.addEventListener('click',()=>{
+            this.listEl.innerHTML = `<form class="form-group">
+<input type="file" class="form-control mt-3">
+<button type="submit" id="submit" class="btn btn-primary mt-2">Добавить</button> 
+<button class="btn btn-secondary mt-2">Отмена</button>
+</form>`;
+
+        });
+
         this.onLoadAll();
     }
 
@@ -32,7 +43,7 @@ class Widget {
         for (const mem of mems) {
             if (mem.score < this.scoreLimit) continue;
             const newMemEl = document.createElement('div');
-            newMemEl.innerHTML = `<div class="border">
+            newMemEl.innerHTML = `<div class="mt-3">
      <img src="${mem.imgUrl}" alt=""></div>
     `;
             this.listEl.appendChild(newMemEl);
